@@ -8,6 +8,7 @@ pipeline {
                 echo "Building..."
                 sh '''
                 echo "Build stuff happening"
+                python3 --version
                 '''
             }
         }
