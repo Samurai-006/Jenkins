@@ -2,7 +2,7 @@ pipeline {
     agent {
         docker{
             image 'semla-agent'
-            args '-u root'
+            args '-w /workspace'
         }
     }
     stages {
