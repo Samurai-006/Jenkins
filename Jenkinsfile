@@ -4,7 +4,7 @@ pipeline {
         stage('Build and Test Model'){
             steps{
                 echo "Building Model..."
-                bat 'omc -e "loadFile(\\"Library/package.mo\\");simulate(Library.PumpingSystem);"'
+                bat 'omc model.mos"'
                 echo "Test completed!!!"
             }
         }

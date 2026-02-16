@@ -1,0 +1,2 @@
+loadFile("Library/package.mo");
+simulate(Library.PumpingSystem);
