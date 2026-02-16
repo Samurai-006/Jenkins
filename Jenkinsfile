@@ -4,7 +4,7 @@ pipeline {
         stage('Build and Test Model'){
             steps{
                 echo "Building Model..."
-                bat 'omc Library/package.mo || true'
+                bat 'omc Library/package.mo || True'
                 echo "Test completed!!!"
             }
         }
