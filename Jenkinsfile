@@ -11,9 +11,9 @@ pipeline {
         stage('Encrypt Modelica Library') {
             steps {
                 echo "Encrypting..."
-                sh '''
-                semla_encrypt Library \
-                    --output Library.mlc
+                bat '''
+                docker run --rm -v "%cd%:/workspace" semla-agent \
+                bash -c "cd /workspace && /opt/SEMLA/src/build/packagetool Library"
                 '''
             }
         }
