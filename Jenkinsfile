@@ -1,6 +1,9 @@
 pipeline {
     agent {
-        dockerfile true
+        docker{
+            image 'semla-agent'
+            args '-u root'
+        }
     }
     stages {
         stage('Build and Test Model'){
