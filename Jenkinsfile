@@ -1,16 +1,10 @@
 pipeline {
-    agent {
-        docker{
-            image 'semla-agent'
-            args '-u root -w /workspace'
-            reuseNode true
-        }
-    }
+    agent any
     stages {
         stage('Build and Test Model'){
             steps{
                 echo "Building Model..."
-                sh 'omc Library/package.mo || true'
+                bat 'omc Library/package.mo || true'
                 echo "Test completed!!!"
             }
         }
