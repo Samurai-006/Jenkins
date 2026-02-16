@@ -7,9 +7,8 @@ RUN apt-get update && apt-get install -y \
     libssl-dev \
     wget \
     python3 \
-    python3-pip \
-    ca-certificates \
-    && rm -rf /var/lib/apt/lists/*
+    python3-pip
+    
 WORKDIR /opt
 RUN git clone https://openmodelica.org/git-readonly/OpenModelica.git OpenModelica-minimal
 RUN git clone https://github.com/modelon-community/SEMLA.git
