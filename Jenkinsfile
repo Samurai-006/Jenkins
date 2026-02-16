@@ -3,6 +3,7 @@ pipeline {
         docker{
             image 'semla-agent'
             args '-w /workspace'
+            reuseNode true
         }
     }
     stages {
