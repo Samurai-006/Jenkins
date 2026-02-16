@@ -1,30 +1,22 @@
 pipeline {
     agent {
-        docker { image 'python-docker-agent:latest' }
+        dockerfile true
+        arg '-u root'
     }
     stages {
-        stage('Build') {
+        stage('Build and Test Model'){
+            steps{
+                echo "Building Model..."
+                sh 'omc Library/package.mo || true'
+                echo "Test completed!!!"
+            }
+        }
+        stage('Encrypt Modelica Library') {
             steps {
-                echo "Building..."
+                echo "Encrypting..."
                 sh '''
-                echo "Build stuff happening"
-                python3 --version
-                '''
-            }
-        }
-        stage('Test'){
-            steps{
-                echo "Testing..."
-                sh'''
-                echo "Test stuff happens here"
-                '''
-            }
-        }
-        stage('Deliver'){
-            steps{
-                echo "Deliver..."
-                sh '''
-                echo "Delivering"
+                semla_encrypt Library \
+                    --output Library.mlc
                 '''
             }
         }

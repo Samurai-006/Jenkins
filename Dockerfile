@@ -1,6 +1,22 @@
-FROM jenkins/agent:alpine-jdk21
-USER root
-RUN apk update && apk upgrade && \
-    apk add python3 py3-pip && \
-    rm -rf /var/cache/apk/*
-USER jenkins
+FROM ubuntu:22.04
+ENV DEBIAN_FRONTEND=noninteractive
+RUN apt-get update && apt-get install -y openmodelica \
+    git \
+    cmake \
+    build-essential \
+    libssl-dev \
+    wget \
+    python3 \
+    python3-pip \
+    ca-certificates \
+    && rm -rf /var/lib/apt/lists/*
+
+WORKDIR /opt
+RUN git clone https://github.com/modelon-community/SEMLA.git
+WORKDIR /opt/SEMLA/src
+RUN mkdir build && cd build && \
+    cmake .. && \
+    make
+
+ENV PATH="/opt/SEMLA/src/build:${PATH}"
+WORKDIR /workspace
