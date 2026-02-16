@@ -1,7 +1,6 @@
 pipeline {
     agent {
         dockerfile true
-        arg '-u root'
     }
     stages {
         stage('Build and Test Model'){
