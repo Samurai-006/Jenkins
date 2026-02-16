@@ -1,10 +1,10 @@
 pipeline {
     agent any
-    stages {
+    stages {    
         stage('Build and Test Model'){
             steps{
                 echo "Building Model..."
-                bat 'omc Library/package.mo || True'
+                bat 'omc Library/package.mo'
                 echo "Test completed!!!"
             }
         }
