@@ -2,7 +2,7 @@ pipeline {
     agent {
         docker{
             image 'semla-agent'
-            args '-w /workspace'
+            args '-u root -w /workspace'
             reuseNode true
         }
     }
